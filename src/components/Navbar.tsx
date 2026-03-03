@@ -10,47 +10,6 @@ import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-function Logo({ size = "default" }: { size?: "default" | "large" }) {
-  const imgClass =
-    size === "large" ? "h-12 sm:h-14 w-auto" : "h-9 sm:h-10 md:h-11 w-auto";
-  const nameClass =
-    size === "large"
-      ? "text-xl sm:text-2xl"
-      : "text-lg sm:text-xl md:text-[22px]";
-  const taglineClass = size === "large" ? "text-[10px]" : "text-[8px] sm:text-[9px]";
-
-  return (
-    <div className="flex items-center gap-2.5 sm:gap-3">
-      <Image
-        src="/assets/logo/logo_sl.png"
-        alt="Silva Lux Resort"
-        width={120}
-        height={120}
-        className={cn(imgClass, "rounded-sm")}
-        priority
-      />
-      <div className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-serif font-bold tracking-wide text-cream",
-            nameClass
-          )}
-        >
-          Silva Lux
-        </span>
-        <span
-          className={cn(
-            "font-medium uppercase tracking-[0.25em] text-gold-400 mt-0.5",
-            taglineClass
-          )}
-        >
-          Resort
-        </span>
-      </div>
-    </div>
-  );
-}
-
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -75,9 +34,16 @@ export function Navbar() {
         navBg
       )}
     >
-      <div className="mx-auto flex h-18 sm:h-20 md:h-22 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="shrink-0">
-          <Logo />
+      <div className="mx-auto flex h-20 sm:h-22 md:h-24 max-w-7xl items-center justify-between px-4 sm:px-6">
+        <Link href="/" className="shrink-0 -my-2">
+          <Image
+            src="/assets/logo/logo_sl.png"
+            alt="Silva Lux Resort"
+            width={200}
+            height={200}
+            className="h-14 sm:h-16 md:h-[72px] w-auto rounded-md"
+            priority
+          />
         </Link>
 
         <nav
@@ -126,7 +92,13 @@ export function Navbar() {
                 className="mb-2"
                 onClick={() => setOpen(false)}
               >
-                <Logo size="large" />
+                <Image
+                  src="/assets/logo/logo_sl.png"
+                  alt="Silva Lux Resort"
+                  width={200}
+                  height={200}
+                  className="h-20 w-auto rounded-md"
+                />
               </Link>
               {NAV_LINKS.map((link) => (
                 <Link
