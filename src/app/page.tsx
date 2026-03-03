@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Bed,
@@ -12,6 +13,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { FEATURES, ROOMS } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Silva Lux Resort — Luxury Resort in Wayanad, Kerala",
+  description:
+    "Welcome to Silva Lux Resort in Kenichira, Panamaram, Wayanad. Enjoy 14 luxury rooms, a multi-cuisine restaurant, event halls, and serene nature views. Book your stay today.",
+  openGraph: {
+    title: "Silva Lux Resort — Luxury Resort in Wayanad, Kerala",
+    description:
+      "A serene getaway in the heart of Wayanad with 14 well-appointed rooms, multi-cuisine dining, and warm Kerala hospitality.",
+  },
+};
 
 const iconMap: Record<string, React.ReactNode> = {
   bed: <Bed className="h-6 w-6 sm:h-8 sm:w-8" />,
@@ -31,8 +43,7 @@ export default function Home() {
         cta={{ label: "Explore Rooms", href: "/rooms" }}
       />
 
-      {/* Welcome Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-28">
+      <section aria-label="Welcome" className="py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
           <SectionHeading
             title="A Perfect Blend of Comfort & Nature"
@@ -48,8 +59,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="bg-forest-600 py-12 sm:py-16 md:py-20 lg:py-28">
+      <section aria-label="Features" className="bg-forest-600 py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
             title="What We Offer"
@@ -79,8 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Rooms Preview */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-28">
+      <section aria-label="Rooms" className="py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
             title="Our Rooms"
@@ -118,8 +127,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Restaurant Preview */}
-      <section className="bg-cream-dark py-12 sm:py-16 md:py-20 lg:py-28">
+      <section aria-label="Restaurant" className="bg-cream-dark py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
           <SectionHeading
             title="Multi-Cuisine Restaurant"
@@ -139,8 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="relative bg-forest-700 py-12 sm:py-16 md:py-20 lg:py-28">
+      <section aria-label="Book your stay" className="relative bg-forest-700 py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-r from-forest-800/90 to-forest-600/90" />
         <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
           <h2 className="mb-3 sm:mb-4 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-cream">

@@ -1,8 +1,20 @@
+import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { BLOG_POSTS } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Read travel tips, Wayanad guides, and stories from Silva Lux Resort. Discover hidden gems, local cuisine, and things to do near Kenichira, Panamaram.",
+  openGraph: {
+    title: "Blog — Silva Lux Resort, Wayanad",
+    description:
+      "Travel stories, Wayanad guides, and dining highlights from Silva Lux Resort in Kerala.",
+  },
+};
 
 export default function BlogPage() {
   return (

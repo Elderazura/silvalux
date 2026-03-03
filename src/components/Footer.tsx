@@ -26,7 +26,7 @@ export function Footer() {
             <h4 className="mb-3 sm:mb-4 text-sm font-semibold uppercase tracking-wider text-gold-400">
               Quick Links
             </h4>
-            <nav className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-col sm:gap-2">
+            <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-col sm:gap-2">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}

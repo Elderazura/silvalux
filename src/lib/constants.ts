@@ -1,15 +1,32 @@
+export const SITE_URL = "https://silva-fef4a8c6d-saliths-projects-dc972f64.vercel.app";
+
+export const GEO = {
+  latitude: 11.7365,
+  longitude: 76.0765,
+};
+
 export const RESORT_INFO = {
   name: "Silva Lux",
   tagline: "Resort",
   fullName: "Silva Lux Resort",
   description:
     "A serene getaway located in Kenichira, Panamaram, in the beautiful district of Wayanad.",
+  longDescription:
+    "Silva Lux Resort is a luxury resort in Kenichira, Panamaram, Wayanad, Kerala. Featuring 14 well-appointed rooms including 13 Deluxe Rooms and 1 Suite, a multi-cuisine restaurant, conference halls, and warm hospitality surrounded by lush greenery.",
   address:
     "Panamaram – Nadavayal – Beenachi Rd, Kenichira, Wayanad, Kerala 673596",
+  addressStructured: {
+    streetAddress: "Panamaram – Nadavayal – Beenachi Rd",
+    addressLocality: "Kenichira, Panamaram",
+    addressRegion: "Kerala",
+    postalCode: "673596",
+    addressCountry: "IN",
+  },
   phone: ["+91 0493 6213333", "+91 7592 049000"],
   email: "silvalux@vghotels.in",
   mapUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.123!2d76.0765!3d11.7365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDQ0JzExLjQiTiA3NsKwMDQnMzUuNCJF!5e0!3m2!1sen!2sin!4v1700000000000",
+  numberOfRooms: 14,
 };
 
 export const NAV_LINKS = [

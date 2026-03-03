@@ -1,9 +1,21 @@
+import type { Metadata } from "next";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { RESORT_INFO } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Contact Silva Lux Resort, Wayanad — call +91 0493 6213333, email silvalux@vghotels.in, or fill out our form. Located at Panamaram–Nadavayal–Beenachi Rd, Kenichira, Kerala 673596.",
+  openGraph: {
+    title: "Contact Us — Silva Lux Resort, Wayanad",
+    description:
+      "Get in touch with Silva Lux Resort for bookings and inquiries. Phone, email, and directions to our Kenichira location.",
+  },
+};
 
 const contactDetails = [
   {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   Bed,
   UtensilsCrossed,
@@ -11,6 +12,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { FEATURES, RESORT_INFO } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about Silva Lux Resort — our story, amenities, and commitment to warm hospitality in Kenichira, Wayanad. 14 rooms, multi-cuisine restaurant, and lush green surroundings.",
+  openGraph: {
+    title: "About Us — Silva Lux Resort, Wayanad",
+    description:
+      "Discover the story behind Silva Lux Resort in Wayanad, Kerala. Comfort, luxury, and nature come together in the heart of Kenichira.",
+  },
+};
 
 const iconMap: Record<string, React.ReactNode> = {
   bed: <Bed className="h-6 w-6 sm:h-7 sm:w-7" />,

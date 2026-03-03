@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -5,6 +6,17 @@ import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ROOMS } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Rooms & Suites",
+  description:
+    "Browse 14 well-appointed rooms at Silva Lux Resort, Wayanad — 13 Deluxe Rooms and 1 Suite with AC, Wi-Fi, TV, room service, and more. Book your ideal room today.",
+  openGraph: {
+    title: "Rooms & Suites — Silva Lux Resort, Wayanad",
+    description:
+      "13 Deluxe Rooms and 1 elegant Suite at Silva Lux Resort, Kenichira. Modern amenities, cozy ambiance, and views of Wayanad's lush greenery.",
+  },
+};
 
 export default function RoomsPage() {
   return (

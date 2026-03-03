@@ -43,7 +43,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:gap-8 md:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-6 lg:gap-8 md:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -69,7 +69,10 @@ export function Navbar() {
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <button className="text-cream p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center">
+            <button
+              aria-label="Open navigation menu"
+              className="text-cream p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            >
               <Menu className="h-6 w-6" />
             </button>
           </SheetTrigger>
