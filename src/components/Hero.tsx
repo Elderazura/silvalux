@@ -19,7 +19,7 @@ export function Hero({ title, subtitle, cta, compact }: HeroProps) {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-forest-800/80 via-forest-700/60 to-forest-600/80" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center pt-16 sm:pt-20">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center pt-18 sm:pt-22">
         <h1 className="animate-fade-in-up font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-cream">
           {title}
         </h1>

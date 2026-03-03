@@ -10,6 +10,47 @@ import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
+function Logo({ size = "default" }: { size?: "default" | "large" }) {
+  const imgClass =
+    size === "large" ? "h-12 sm:h-14 w-auto" : "h-9 sm:h-10 md:h-11 w-auto";
+  const nameClass =
+    size === "large"
+      ? "text-xl sm:text-2xl"
+      : "text-lg sm:text-xl md:text-[22px]";
+  const taglineClass = size === "large" ? "text-[10px]" : "text-[8px] sm:text-[9px]";
+
+  return (
+    <div className="flex items-center gap-2.5 sm:gap-3">
+      <Image
+        src="/assets/logo/logo_sl.png"
+        alt="Silva Lux Resort"
+        width={120}
+        height={120}
+        className={cn(imgClass, "rounded-sm")}
+        priority
+      />
+      <div className="flex flex-col leading-none">
+        <span
+          className={cn(
+            "font-serif font-bold tracking-wide text-cream",
+            nameClass
+          )}
+        >
+          Silva Lux
+        </span>
+        <span
+          className={cn(
+            "font-medium uppercase tracking-[0.25em] text-gold-400 mt-0.5",
+            taglineClass
+          )}
+        >
+          Resort
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -34,19 +75,15 @@ export function Navbar() {
         navBg
       )}
     >
-      <div className="mx-auto flex h-16 sm:h-18 md:h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-18 sm:h-20 md:h-22 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="shrink-0">
-          <Image
-            src="/assets/logo/logo_sl.png"
-            alt="Silva Lux Resort"
-            width={120}
-            height={120}
-            className="h-10 sm:h-12 md:h-14 w-auto"
-            priority
-          />
+          <Logo />
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-6 lg:gap-8 md:flex">
+        <nav
+          aria-label="Main navigation"
+          className="hidden items-center gap-6 lg:gap-8 md:flex"
+        >
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -86,16 +123,10 @@ export function Navbar() {
             <div className="flex flex-col gap-5 px-6 pt-10 pb-8">
               <Link
                 href="/"
-                className="mb-4"
+                className="mb-2"
                 onClick={() => setOpen(false)}
               >
-                <Image
-                  src="/assets/logo/logo_sl.png"
-                  alt="Silva Lux Resort"
-                  width={120}
-                  height={120}
-                  className="h-16 w-auto"
-                />
+                <Logo size="large" />
               </Link>
               {NAV_LINKS.map((link) => (
                 <Link
