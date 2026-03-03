@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -9,13 +10,14 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-12 md:py-16">
         <div className="grid gap-8 sm:gap-10 md:gap-12 sm:grid-cols-2 md:grid-cols-3">
           <div className="sm:col-span-2 md:col-span-1">
-            <Link href="/" className="flex flex-col leading-tight mb-4">
-              <span className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-cream">
-                Silva Lux
-              </span>
-              <span className="text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] text-gold-400">
-                Resort
-              </span>
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/assets/logo/logo_sl.png"
+                alt="Silva Lux Resort"
+                width={120}
+                height={120}
+                className="h-16 sm:h-20 w-auto"
+              />
             </Link>
             <p className="text-sm leading-relaxed text-cream/60 max-w-xs">
               {RESORT_INFO.description}

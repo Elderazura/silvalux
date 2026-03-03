@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -34,13 +35,15 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-16 sm:h-18 md:h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex flex-col leading-tight">
-          <span className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-cream">
-            Silva Lux
-          </span>
-          <span className="text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.3em] text-gold-400">
-            Resort
-          </span>
+        <Link href="/" className="shrink-0">
+          <Image
+            src="/assets/logo/logo_sl.png"
+            alt="Silva Lux Resort"
+            width={120}
+            height={120}
+            className="h-10 sm:h-12 md:h-14 w-auto"
+            priority
+          />
         </Link>
 
         <nav aria-label="Main navigation" className="hidden items-center gap-6 lg:gap-8 md:flex">
@@ -80,18 +83,19 @@ export function Navbar() {
             side="right"
             className="w-[280px] sm:w-72 bg-forest-600 border-forest-500 p-0"
           >
-            <div className="flex flex-col gap-5 px-6 pt-12 pb-8">
+            <div className="flex flex-col gap-5 px-6 pt-10 pb-8">
               <Link
                 href="/"
-                className="flex flex-col leading-tight mb-4"
+                className="mb-4"
                 onClick={() => setOpen(false)}
               >
-                <span className="font-serif text-2xl font-bold tracking-wide text-cream">
-                  Silva Lux
-                </span>
-                <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-gold-400">
-                  Resort
-                </span>
+                <Image
+                  src="/assets/logo/logo_sl.png"
+                  alt="Silva Lux Resort"
+                  width={120}
+                  height={120}
+                  className="h-16 w-auto"
+                />
               </Link>
               {NAV_LINKS.map((link) => (
                 <Link
