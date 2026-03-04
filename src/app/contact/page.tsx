@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
-import { RESORT_INFO } from "@/lib/constants";
+import { RESORT_INFO, GALLERY_ITEMS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -95,6 +98,7 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Map */}
       <section className="pb-12 sm:pb-16 md:pb-20 lg:pb-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="aspect-[16/9] sm:aspect-[21/9] overflow-hidden rounded-lg border">
@@ -109,6 +113,73 @@ export default function ContactPage() {
               title="Silva Lux Resort Location"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Gallery Preview */}
+      <section className="py-12 sm:py-16 md:py-20 bg-cream-dark">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <SectionHeading
+            title="Explore Our Resort"
+            subtitle="Browse photos of our rooms, restaurant, and event spaces"
+          />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+            {GALLERY_ITEMS.slice(0, 4).map((item) => (
+              <Link
+                key={item.id}
+                href="/gallery"
+                className="group relative aspect-[4/3] overflow-hidden rounded-lg"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-forest-900/0 transition-colors group-hover:bg-forest-900/30" />
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8 sm:mt-10">
+            <Button
+              asChild
+              variant="outline"
+              className="border-forest-600 text-forest-600 hover:bg-forest-600 hover:text-cream min-h-[44px] px-8"
+            >
+              <Link href="/gallery">
+                View Full Gallery <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Rooms CTA */}
+      <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden">
+        <Image
+          src="/images/rooms/room-01.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-forest-900/75" />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
+          <h2 className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-cream">
+            Looking for the Perfect Room?
+          </h2>
+          <p className="mb-6 text-sm sm:text-base text-cream/70">
+            Explore our 14 well-appointed rooms including deluxe rooms and a suite, all designed for your comfort.
+          </p>
+          <Button
+            asChild
+            className="bg-gold-400 text-forest-800 hover:bg-gold-300 min-h-[44px] px-8"
+          >
+            <Link href="/rooms">
+              View Rooms & Suites <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </section>
     </>

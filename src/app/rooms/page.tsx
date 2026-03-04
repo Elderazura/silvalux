@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ConciergeBell, CreditCard } from "lucide-react";
+import { ArrowRight, Check, ConciergeBell, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ROOMS, AMENITIES } from "@/lib/constants";
+import { ROOMS, AMENITIES, GALLERY_ITEMS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Rooms & Suites",
@@ -30,6 +30,7 @@ export default function RoomsPage() {
         image="/images/rooms/room-01.jpg"
       />
 
+      {/* Room Listings */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
@@ -113,6 +114,7 @@ export default function RoomsPage() {
         </div>
       </section>
 
+      {/* Facilities & Amenities */}
       <section className="bg-cream-dark py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
@@ -202,6 +204,7 @@ export default function RoomsPage() {
         </div>
       </section>
 
+      {/* Restaurant */}
       <section className="bg-forest-600 py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <SectionHeading
@@ -239,6 +242,46 @@ export default function RoomsPage() {
         </div>
       </section>
 
+      {/* Gallery Preview */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <SectionHeading
+            title="Gallery"
+            subtitle="See more of our resort"
+          />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+            {GALLERY_ITEMS.slice(0, 4).map((item) => (
+              <Link
+                key={item.id}
+                href="/gallery"
+                className="group relative aspect-[4/3] overflow-hidden rounded-lg"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-forest-900/0 transition-colors group-hover:bg-forest-900/30" />
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8 sm:mt-10">
+            <Button
+              asChild
+              variant="outline"
+              className="border-forest-600 text-forest-600 hover:bg-forest-600 hover:text-cream min-h-[44px] px-8"
+            >
+              <Link href="/gallery">
+                View Full Gallery <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Bathroom Banner */}
       <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
         <Image
           src="/images/bathroom/bathroom-06.jpg"

@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import {
-  Bed,
-  UtensilsCrossed,
-  TreePine,
-  Wifi,
-  CalendarDays,
-  Heart,
-  MapPin,
-} from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Bed, UtensilsCrossed, TreePine, Wifi, CalendarDays, Heart, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { FEATURES, RESORT_INFO } from "@/lib/constants";
+import { FEATURES, RESORT_INFO, ROOMS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -44,6 +38,7 @@ export default function AboutPage() {
         image="/images/restaurant/restaurant-05.jpg"
       />
 
+      {/* Our Story */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <SectionHeading title="Our Story" />
@@ -82,6 +77,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Features */}
       <section className="bg-cream-dark py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading
@@ -111,6 +107,81 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Rooms Preview Banner */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <SectionHeading
+            title="Our Accommodation"
+            subtitle="14 rooms designed for comfort and relaxation"
+          />
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
+            {ROOMS.map((room) => (
+              <Link
+                key={room.id}
+                href="/rooms"
+                className="group relative aspect-[16/10] rounded-xl overflow-hidden shadow-lg"
+              >
+                <Image
+                  src={room.images[0]}
+                  alt={room.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-900/70 to-transparent" />
+                <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-cream mb-1">
+                    {room.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-cream/70">
+                    {room.count} {room.count > 1 ? "rooms" : "room"} available
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8 sm:mt-10">
+            <Button
+              asChild
+              className="bg-forest-600 text-cream hover:bg-forest-700 min-h-[44px] px-8"
+            >
+              <Link href="/rooms">
+                Explore Rooms & Amenities <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Banner */}
+      <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden">
+        <Image
+          src="/images/restaurant/restaurant-03.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-forest-900/70" />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
+          <h2 className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-cream">
+            See It for Yourself
+          </h2>
+          <p className="mb-6 text-sm sm:text-base text-cream/70">
+            Browse photos of our rooms, restaurant, event halls, and lush surroundings.
+          </p>
+          <Button
+            asChild
+            className="bg-gold-400 text-forest-800 hover:bg-gold-300 min-h-[44px] px-8"
+          >
+            <Link href="/gallery">
+              View Gallery <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Location */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
           <SectionHeading
@@ -135,6 +206,26 @@ export default function AboutPage() {
               title="Silva Lux Resort Location"
             />
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-forest-600 py-12 sm:py-16 md:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+          <h2 className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-cream">
+            Ready to Experience Silva Lux?
+          </h2>
+          <p className="mb-6 text-cream/70 text-sm sm:text-base">
+            Get in touch with us for bookings and inquiries.
+          </p>
+          <Button
+            asChild
+            className="bg-gold-400 text-forest-800 hover:bg-gold-300 min-h-[44px] px-8"
+          >
+            <Link href="/contact">
+              Contact Us <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </section>
     </>

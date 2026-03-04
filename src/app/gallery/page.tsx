@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -105,6 +108,46 @@ export default function GalleryPage() {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Rooms Banner */}
+      <section className="relative py-16 sm:py-20 md:py-28 overflow-hidden">
+        <Image
+          src="/images/rooms/room-09.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-900/85 via-forest-900/70 to-forest-900/50" />
+        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="max-w-lg">
+            <h2 className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-cream">
+              Ready to Book Your Stay?
+            </h2>
+            <p className="mb-6 text-sm sm:text-base text-cream/70 leading-relaxed">
+              Explore our 14 well-appointed rooms and find the perfect space for
+              your Wayanad getaway.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button
+                asChild
+                className="bg-gold-400 text-forest-800 hover:bg-gold-300 min-h-[44px]"
+              >
+                <Link href="/rooms">
+                  Explore Rooms <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="border-cream/30 text-cream hover:bg-cream/10 min-h-[44px]"
+              >
+                <Link href="/contact">Contact Us</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
