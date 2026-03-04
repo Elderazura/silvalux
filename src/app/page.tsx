@@ -36,7 +36,7 @@ export default function Home() {
         title="Welcome to Silva Lux"
         subtitle="A serene getaway in the heart of Wayanad, where comfort meets nature's embrace."
         cta={{ label: "Explore Rooms", href: "/rooms" }}
-        image="/images/rooms/room-09.jpg"
+        image="/images/exterior/exterior-01.jpg"
       />
 
       {/* Welcome */}
@@ -62,6 +62,38 @@ export default function Home() {
               Learn Our Story <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
+        </div>
+      </section>
+
+      {/* Exterior Showcase */}
+      <section aria-label="The resort" className="relative py-16 sm:py-20 md:py-28 overflow-hidden">
+        <Image
+          src="/images/exterior/exterior-07.jpg"
+          alt="Silva Lux Resort exterior"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-900/85 via-forest-900/65 to-forest-900/40" />
+        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="max-w-lg">
+            <h2 className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-cream">
+              Set Amidst Lush Greenery
+            </h2>
+            <p className="mb-6 text-sm sm:text-base text-cream/70 leading-relaxed">
+              Nestled along the Panamaram–Nadavayal–Beenachi Road in Kenichira,
+              Silva Lux Resort welcomes you with its elegant architecture and
+              tranquil surroundings in the heart of Wayanad.
+            </p>
+            <Button
+              asChild
+              className="bg-gold-400 text-forest-800 hover:bg-gold-300 min-h-[44px]"
+            >
+              <Link href="/about">
+                About Us <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 

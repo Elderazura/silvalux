@@ -35,7 +35,7 @@ export default function AboutPage() {
         title="About Us"
         subtitle="Our story, our passion"
         compact
-        image="/images/restaurant/restaurant-05.jpg"
+        image="/images/exterior/exterior-02.jpg"
       />
 
       {/* Our Story */}
@@ -73,6 +73,52 @@ export default function AboutPage() {
                 satisfy diverse tastes.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Exterior Strip */}
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <SectionHeading
+            title="The Resort"
+            subtitle="Elegant architecture surrounded by nature"
+          />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+            {[
+              { src: "/images/exterior/exterior-01.jpg", alt: "Resort exterior view" },
+              { src: "/images/exterior/exterior-04.jpg", alt: "Resort entrance" },
+              { src: "/images/exterior/exterior-07.jpg", alt: "Resort surrounded by greenery" },
+              { src: "/images/exterior/exterior-09.jpg", alt: "Resort evening view" },
+              { src: "/images/exterior/exterior-10.jpg", alt: "Resort landscape" },
+              { src: "/images/exterior/exterior-12.jpg", alt: "Resort frontage" },
+            ].map((img) => (
+              <Link
+                key={img.src}
+                href="/gallery"
+                className="group relative aspect-[4/3] overflow-hidden rounded-lg shadow-md"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-forest-900/0 transition-colors group-hover:bg-forest-900/20" />
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Button
+              asChild
+              variant="outline"
+              className="border-forest-600 text-forest-600 hover:bg-forest-600 hover:text-cream min-h-[44px] px-8"
+            >
+              <Link href="/gallery">
+                View Full Gallery <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -10,7 +10,7 @@ import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { GALLERY_ITEMS } from "@/lib/constants";
 
-const categories = ["All", "Rooms", "Restaurant", "Event Hall", "Bathroom"];
+const categories = ["All", "Exterior", "Rooms", "Restaurant", "Event Hall", "Bathroom"];
 
 export default function GalleryPage() {
   const [selected, setSelected] = useState<(typeof GALLERY_ITEMS)[0] | null>(
@@ -29,7 +29,7 @@ export default function GalleryPage() {
         title="Gallery"
         subtitle="Glimpses of Silva Lux Resort"
         compact
-        image="/images/restaurant/restaurant-03.jpg"
+        image="/images/exterior/exterior-08.jpg"
       />
 
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
