@@ -153,6 +153,44 @@ export const BLOG_POSTS = [
   },
 ];
 
+export const AMENITIES = {
+  complimentary: [
+    "Breakfast (Indian & Continental)",
+    "Bottled Mineral Water (1000ml, 2 Nos)",
+    "Soap",
+    "Dental Kit",
+    "Comb",
+    "Shampoo",
+    "Moisturizer",
+    "Shoeshine Strip",
+    "All-Purpose Kit",
+    "Free Internet Access",
+    "Daily Complimentary Newspaper",
+    "Valet Parking",
+    "Shaving Kit",
+    "Shower Cap",
+    "Hair Dryer",
+    "Safe Deposit Lockers",
+    "Left Luggage & Guest Stationery",
+    "Mini Fridge",
+    "Tea & Coffee Maker",
+  ],
+  onRequest: [
+    "Wheelchair",
+    "High Quality Guest Amenities",
+    "Multi-Channel Entertainment",
+    "Iron & Iron Board",
+  ],
+  chargeable: [
+    "Travel Desk",
+    "In-House Laundry",
+    "Doctor on Call",
+    "Multi-Cuisine Restaurant",
+    "Conference Halls & Event Facilities",
+    "Telephone",
+  ],
+};
+
 export const GALLERY_ITEMS = [
   { id: "1", src: "/images/rooms/room-01.jpg", alt: "Deluxe Room with carved wooden bed", category: "Rooms" },
   { id: "2", src: "/images/rooms/room-03.jpg", alt: "Deluxe Room with cove lighting", category: "Rooms" },

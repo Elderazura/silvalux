@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Check, ConciergeBell, CreditCard } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ROOMS } from "@/lib/constants";
+import { ROOMS, AMENITIES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Rooms & Suites",
@@ -108,6 +109,95 @@ export default function RoomsPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-cream-dark py-12 sm:py-16 md:py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <SectionHeading
+            title="Facilities & Amenities"
+            subtitle="Everything you need for a comfortable and memorable stay"
+          />
+
+          <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-3">
+            <Card className="border-forest-100 bg-white">
+              <CardContent className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-4 sm:mb-5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-forest-600">
+                    <Check className="h-5 w-5 text-cream" />
+                  </div>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-forest-600">
+                    Complimentary
+                  </h3>
+                </div>
+                <ul className="space-y-2">
+                  {AMENITIES.complimentary.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground"
+                    >
+                      <Check className="h-3.5 w-3.5 mt-0.5 shrink-0 text-gold-500" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-forest-100 bg-white">
+              <CardContent className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-4 sm:mb-5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-forest-600">
+                    <ConciergeBell className="h-5 w-5 text-cream" />
+                  </div>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-forest-600">
+                    On Request
+                  </h3>
+                </div>
+                <p className="text-[10px] sm:text-xs text-muted-foreground/60 uppercase tracking-wider mb-3">
+                  Complimentary
+                </p>
+                <ul className="space-y-2">
+                  {AMENITIES.onRequest.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground"
+                    >
+                      <Check className="h-3.5 w-3.5 mt-0.5 shrink-0 text-gold-500" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-forest-100 bg-white">
+              <CardContent className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-4 sm:mb-5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-forest-600">
+                    <CreditCard className="h-5 w-5 text-cream" />
+                  </div>
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-forest-600">
+                    Chargeable
+                  </h3>
+                </div>
+                <p className="text-[10px] sm:text-xs text-muted-foreground/60 uppercase tracking-wider mb-3">
+                  Available on request
+                </p>
+                <ul className="space-y-2">
+                  {AMENITIES.chargeable.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground"
+                    >
+                      <Check className="h-3.5 w-3.5 mt-0.5 shrink-0 text-gold-500" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
