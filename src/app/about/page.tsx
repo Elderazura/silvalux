@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Bed,
   UtensilsCrossed,
@@ -36,38 +37,47 @@ const iconMap: Record<string, React.ReactNode> = {
 export default function AboutPage() {
   return (
     <>
-      <Hero title="About Us" subtitle="Our story, our passion" compact />
+      <Hero
+        title="About Us"
+        subtitle="Our story, our passion"
+        compact
+        image="/images/restaurant/restaurant-05.jpg"
+      />
 
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <SectionHeading title="Our Story" />
-          <div className="space-y-4 sm:space-y-6 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            <p>
-              Welcome to Silva Lux Resort, a serene getaway located in
-              Kenichira, Panamaram, in the beautiful district of Wayanad.
-              Surrounded by lush greenery and the calm charm of nature, Silva Lux
-              Resort offers a perfect blend of comfort, luxury, and warm
-              hospitality.
-            </p>
-            <p>
-              Our resort features 14 well-appointed rooms, including 13 Deluxe
-              Rooms and 1 elegant Suite Room, thoughtfully designed to provide
-              guests with a relaxing and comfortable stay. Each room is equipped
-              with modern amenities to ensure convenience while maintaining a
-              cozy and peaceful ambiance.
-            </p>
-            <p>
-              Silva Lux Resort also houses a multi-cuisine restaurant, serving a
-              variety of delicious dishes prepared with fresh ingredients to
-              satisfy diverse tastes. Whether you prefer traditional Kerala
-              flavors or international cuisine, our restaurant promises a
-              delightful dining experience.
-            </p>
-            <p>
-              Ideal for family vacations, romantic getaways, and leisure
-              travelers, Silva Lux Resort is committed to delivering exceptional
-              service and memorable stays in the heart of Wayanad.
-            </p>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+            <div className="w-full md:flex-1">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/images/rooms/room-12.jpg"
+                  alt="Deluxe room at Silva Lux Resort"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+            <div className="w-full md:flex-1 space-y-4 sm:space-y-6 text-sm sm:text-base text-muted-foreground leading-relaxed">
+              <p>
+                Welcome to Silva Lux Resort, a serene getaway located in
+                Kenichira, Panamaram, in the beautiful district of Wayanad.
+                Surrounded by lush greenery and the calm charm of nature, Silva
+                Lux Resort offers a perfect blend of comfort, luxury, and warm
+                hospitality.
+              </p>
+              <p>
+                Our resort features 14 well-appointed rooms, including 13 Deluxe
+                Rooms and 1 elegant Suite Room, thoughtfully designed to provide
+                guests with a relaxing and comfortable stay.
+              </p>
+              <p>
+                Silva Lux Resort also houses a multi-cuisine restaurant, serving
+                a variety of delicious dishes prepared with fresh ingredients to
+                satisfy diverse tastes.
+              </p>
+            </div>
           </div>
         </div>
       </section>

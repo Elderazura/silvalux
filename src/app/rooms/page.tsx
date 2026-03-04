@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -25,6 +26,7 @@ export default function RoomsPage() {
         title="Our Rooms"
         subtitle="Comfort and elegance in every detail"
         compact
+        image="/images/rooms/room-01.jpg"
       />
 
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
@@ -34,53 +36,75 @@ export default function RoomsPage() {
             subtitle="Choose from 14 well-appointed rooms designed for your comfort"
           />
 
-          <div className="space-y-10 sm:space-y-12 md:space-y-16">
+          <div className="space-y-16 sm:space-y-20 md:space-y-24">
             {ROOMS.map((room, index) => (
-              <div
-                key={room.id}
-                className={`flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center ${
-                  index % 2 !== 0 ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                <div className="w-full md:flex-1">
-                  <div className="aspect-[4/3] rounded-lg bg-forest-100 flex items-center justify-center">
-                    <span className="font-serif text-xl sm:text-2xl md:text-3xl text-forest-400">
-                      {room.name}
-                    </span>
+              <div key={room.id} className="space-y-6 sm:space-y-8">
+                <div
+                  className={`flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center ${
+                    index % 2 !== 0 ? "md:flex-row-reverse" : ""
+                  }`}
+                >
+                  <div className="w-full md:flex-1">
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
+                      <Image
+                        src={room.images[0]}
+                        alt={room.name}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full md:flex-1 space-y-3 sm:space-y-4">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                      <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-forest-600">
+                        {room.name}
+                      </h3>
+                      <Badge
+                        variant="secondary"
+                        className="bg-gold-100 text-gold-700 border-gold-200 text-xs"
+                      >
+                        {room.count} {room.count > 1 ? "Rooms" : "Room"}
+                      </Badge>
+                    </div>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      {room.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                      {room.amenities.map((amenity) => (
+                        <Badge
+                          key={amenity}
+                          variant="outline"
+                          className="border-forest-200 text-forest-600 text-xs"
+                        >
+                          {amenity}
+                        </Badge>
+                      ))}
+                    </div>
+                    <Button
+                      asChild
+                      className="bg-forest-600 text-cream hover:bg-forest-700 mt-2 min-h-[44px] w-full sm:w-auto"
+                    >
+                      <Link href="/contact">Book This Room</Link>
+                    </Button>
                   </div>
                 </div>
-                <div className="w-full md:flex-1 space-y-3 sm:space-y-4">
-                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                    <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-forest-600">
-                      {room.name}
-                    </h3>
-                    <Badge
-                      variant="secondary"
-                      className="bg-gold-100 text-gold-700 border-gold-200 text-xs"
+
+                <div className="grid grid-cols-3 gap-3 sm:gap-4">
+                  {room.images.slice(1).map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-md"
                     >
-                      {room.count} {room.count > 1 ? "Rooms" : "Room"}
-                    </Badge>
-                  </div>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                    {room.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {room.amenities.map((amenity) => (
-                      <Badge
-                        key={amenity}
-                        variant="outline"
-                        className="border-forest-200 text-forest-600 text-xs"
-                      >
-                        {amenity}
-                      </Badge>
-                    ))}
-                  </div>
-                  <Button
-                    asChild
-                    className="bg-forest-600 text-cream hover:bg-forest-700 mt-2 min-h-[44px] w-full sm:w-auto"
-                  >
-                    <Link href="/contact">Book This Room</Link>
-                  </Button>
+                      <Image
+                        src={img}
+                        alt={`${room.name} view ${i + 2}`}
+                        fill
+                        className="object-cover transition-transform duration-500 hover:scale-105"
+                        sizes="(max-width: 768px) 33vw, 20vw"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -88,31 +112,65 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      {/* Restaurant Section */}
       <section className="bg-forest-600 py-12 sm:py-16 md:py-20 lg:py-28">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <SectionHeading
             title="Multi-Cuisine Restaurant"
             subtitle="A culinary journey through Kerala and beyond"
             light
           />
-          <div className="mx-auto max-w-xl">
-            <div className="aspect-[16/10] rounded-lg bg-forest-500/40 flex items-center justify-center mb-6 sm:mb-8">
-              <span className="font-serif text-xl sm:text-2xl text-cream/50">
-                Restaurant
-              </span>
+          <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
+            <div className="w-full md:flex-1">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/images/restaurant/restaurant-01.jpg"
+                  alt="Restaurant table setting"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+            <div className="w-full md:flex-1 text-center md:text-left">
+              <p className="text-sm sm:text-base text-cream/70 leading-relaxed mb-6 sm:mb-8">
+                Our restaurant serves a variety of delicious dishes prepared with
+                fresh ingredients. From traditional Kerala flavors to
+                international cuisine, we promise a delightful dining experience
+                for every palate.
+              </p>
+              <Button
+                asChild
+                className="bg-gold-400 text-forest-800 hover:bg-gold-300 min-h-[44px]"
+              >
+                <Link href="/contact">Reserve a Table</Link>
+              </Button>
             </div>
           </div>
-          <p className="text-sm sm:text-base text-cream/70 leading-relaxed mb-6 sm:mb-8">
-            Our restaurant serves a variety of delicious dishes prepared with
-            fresh ingredients. From traditional Kerala flavors to international
-            cuisine, we promise a delightful dining experience for every palate.
+        </div>
+      </section>
+
+      <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
+        <Image
+          src="/images/bathroom/bathroom-06.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-forest-900/70" />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
+          <h2 className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-cream">
+            Modern Amenities in Every Room
+          </h2>
+          <p className="mb-6 text-cream/70 text-sm sm:text-base">
+            Each room features a modern bathroom with LED-lit mirrors, premium
+            toiletries, hot water, and thoughtful touches for your comfort.
           </p>
           <Button
             asChild
             className="bg-gold-400 text-forest-800 hover:bg-gold-300 min-h-[44px]"
           >
-            <Link href="/contact">Reserve a Table</Link>
+            <Link href="/contact">Book Your Stay</Link>
           </Button>
         </div>
       </section>

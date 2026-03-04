@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Hero } from "@/components/Hero";
@@ -23,6 +24,7 @@ export default function BlogPage() {
         title="Blog"
         subtitle="Stories, tips, and guides from Wayanad"
         compact
+        image="/images/rooms/room-11.jpg"
       />
 
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
@@ -38,10 +40,14 @@ export default function BlogPage() {
                 key={post.id}
                 className="overflow-hidden border-border/50 transition-shadow hover:shadow-lg group cursor-pointer"
               >
-                <div className="aspect-[16/10] bg-forest-100 flex items-center justify-center transition-colors group-hover:bg-forest-200">
-                  <span className="font-serif text-base sm:text-lg text-forest-400">
-                    Blog
-                  </span>
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
                 </div>
                 <CardContent className="p-4 sm:p-6">
                   <div className="mb-2 sm:mb-3 flex flex-wrap items-center gap-2">

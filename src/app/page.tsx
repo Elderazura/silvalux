@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Bed,
@@ -41,6 +42,7 @@ export default function Home() {
         title="Welcome to Silva Lux"
         subtitle="A serene getaway in the heart of Wayanad, where comfort meets nature's embrace."
         cta={{ label: "Explore Rooms", href: "/rooms" }}
+        image="/images/rooms/room-09.jpg"
       />
 
       <section aria-label="Welcome" className="py-12 sm:py-16 md:py-20 lg:py-28">
@@ -101,10 +103,14 @@ export default function Home() {
                 key={room.id}
                 className="overflow-hidden border-border/50 transition-shadow hover:shadow-lg"
               >
-                <div className="aspect-[16/10] bg-forest-100 flex items-center justify-center">
-                  <span className="font-serif text-xl sm:text-2xl text-forest-400">
-                    {room.name}
-                  </span>
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={room.images[0]}
+                    alt={room.name}
+                    fill
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
                 <CardContent className="p-4 sm:p-6">
                   <h3 className="mb-2 font-serif text-lg sm:text-xl font-semibold text-forest-600">
@@ -128,27 +134,49 @@ export default function Home() {
       </section>
 
       <section aria-label="Restaurant" className="bg-cream-dark py-12 sm:py-16 md:py-20 lg:py-28">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
-          <SectionHeading
-            title="Multi-Cuisine Restaurant"
-            subtitle="Whether you prefer traditional Kerala flavors or international cuisine, our restaurant promises a delightful dining experience."
-          />
-          <p className="mb-6 sm:mb-8 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            Silva Lux Resort houses a multi-cuisine restaurant, serving a
-            variety of delicious dishes prepared with fresh ingredients to
-            satisfy diverse tastes.
-          </p>
-          <Button
-            asChild
-            className="bg-forest-600 text-cream hover:bg-forest-700 px-6 sm:px-8 min-h-[44px]"
-          >
-            <Link href="/contact">Reserve a Table</Link>
-          </Button>
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
+            <div className="w-full md:flex-1">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/images/restaurant/restaurant-05.jpg"
+                  alt="Silva Lux multi-cuisine restaurant"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+            <div className="w-full md:flex-1 text-center md:text-left">
+              <h2 className="mb-3 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-forest-600">
+                Multi-Cuisine Restaurant
+              </h2>
+              <p className="mb-6 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                Whether you prefer traditional Kerala flavors or international
+                cuisine, our restaurant promises a delightful dining experience.
+                Serving a variety of delicious dishes prepared with fresh
+                ingredients to satisfy diverse tastes.
+              </p>
+              <Button
+                asChild
+                className="bg-forest-600 text-cream hover:bg-forest-700 px-6 sm:px-8 min-h-[44px]"
+              >
+                <Link href="/contact">Reserve a Table</Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section aria-label="Book your stay" className="relative bg-forest-700 py-12 sm:py-16 md:py-20 lg:py-28">
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-800/90 to-forest-600/90" />
+      <section aria-label="Book your stay" className="relative py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden">
+        <Image
+          src="/images/event-hall/event-hall-04.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-forest-900/75" />
         <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
           <h2 className="mb-3 sm:mb-4 font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-cream">
             Plan Your Perfect Getaway

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -6,25 +7,40 @@ interface HeroProps {
   subtitle?: string;
   cta?: { label: string; href: string };
   compact?: boolean;
+  image?: string;
 }
 
-export function Hero({ title, subtitle, cta, compact }: HeroProps) {
+export function Hero({ title, subtitle, cta, compact, image }: HeroProps) {
   return (
     <section
-      className={`relative flex items-center justify-center bg-forest-700 ${
+      className={`relative flex items-center justify-center overflow-hidden ${
         compact
           ? "h-[40vh] sm:h-[45vh] md:h-[50vh] min-h-[240px] sm:min-h-[280px]"
           : "h-[100svh] min-h-[500px] sm:min-h-[550px]"
       }`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-forest-800/80 via-forest-700/60 to-forest-600/80" />
+      {image ? (
+        <Image
+          src={image}
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+          quality={85}
+        />
+      ) : (
+        <div className="absolute inset-0 bg-forest-700" />
+      )}
+
+      <div className="absolute inset-0 bg-gradient-to-b from-forest-900/70 via-forest-800/50 to-forest-900/70" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center pt-20 sm:pt-24">
-        <h1 className="animate-fade-in-up font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-cream">
+        <h1 className="animate-fade-in-up font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-cream drop-shadow-lg">
           {title}
         </h1>
         {subtitle && (
-          <p className="animate-fade-in-up animate-delay-200 mt-4 sm:mt-6 text-base sm:text-lg md:text-xl leading-relaxed text-cream/70 max-w-2xl mx-auto">
+          <p className="animate-fade-in-up animate-delay-200 mt-4 sm:mt-6 text-base sm:text-lg md:text-xl leading-relaxed text-cream/80 max-w-2xl mx-auto drop-shadow-md">
             {subtitle}
           </p>
         )}

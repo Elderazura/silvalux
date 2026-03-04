@@ -45,7 +45,12 @@ const contactDetails = [
 export default function ContactPage() {
   return (
     <>
-      <Hero title="Contact Us" subtitle="We'd love to hear from you" compact />
+      <Hero
+        title="Contact Us"
+        subtitle="We'd love to hear from you"
+        compact
+        image="/images/event-hall/event-hall-01.jpg"
+      />
 
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">

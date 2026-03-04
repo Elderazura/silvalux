@@ -1,4 +1,4 @@
-export const SITE_URL = "https://silva-fef4a8c6d-saliths-projects-dc972f64.vercel.app";
+export const SITE_URL = "https://silvalux.in";
 
 export const GEO = {
   latitude: 11.7365,
@@ -53,6 +53,12 @@ export const ROOMS = [
       "Room Service",
       "Daily Housekeeping",
     ],
+    images: [
+      "/images/rooms/room-01.jpg",
+      "/images/rooms/room-03.jpg",
+      "/images/rooms/room-12.jpg",
+      "/images/rooms/room-04.jpg",
+    ],
   },
   {
     id: "suite",
@@ -69,6 +75,11 @@ export const ROOMS = [
       "Living Area",
       "Room Service",
       "Premium Toiletries",
+    ],
+    images: [
+      "/images/rooms/room-02.jpg",
+      "/images/rooms/room-05.jpg",
+      "/images/rooms/room-06.jpg",
     ],
   },
 ];
@@ -120,6 +131,7 @@ export const BLOG_POSTS = [
       "Explore the lush landscapes, wildlife sanctuaries, and ancient caves that make Wayanad one of Kerala's most enchanting destinations.",
     date: "February 15, 2026",
     category: "Travel",
+    image: "/images/rooms/room-09.jpg",
   },
   {
     id: "2",
@@ -128,6 +140,7 @@ export const BLOG_POSTS = [
       "From Edakkal Caves to Banasura Sagar Dam, discover the must-visit attractions just a short drive from our resort.",
     date: "January 28, 2026",
     category: "Activities",
+    image: "/images/event-hall/event-hall-04.jpg",
   },
   {
     id: "3",
@@ -136,5 +149,27 @@ export const BLOG_POSTS = [
       "Dive into the flavors of traditional Kerala cuisine with our chef's specially curated menu featuring local ingredients.",
     date: "January 10, 2026",
     category: "Dining",
+    image: "/images/restaurant/restaurant-08.jpg",
   },
+];
+
+export const GALLERY_ITEMS = [
+  { id: "1", src: "/images/rooms/room-01.jpg", alt: "Deluxe Room with carved wooden bed", category: "Rooms" },
+  { id: "2", src: "/images/rooms/room-03.jpg", alt: "Deluxe Room with cove lighting", category: "Rooms" },
+  { id: "3", src: "/images/rooms/room-12.jpg", alt: "Deluxe Room with nature view", category: "Rooms" },
+  { id: "4", src: "/images/rooms/room-02.jpg", alt: "Suite Room with premium furnishings", category: "Rooms" },
+  { id: "5", src: "/images/rooms/room-05.jpg", alt: "Suite Room front view", category: "Rooms" },
+  { id: "6", src: "/images/rooms/room-09.jpg", alt: "Room with bamboo garden view", category: "Rooms" },
+  { id: "7", src: "/images/rooms/room-04.jpg", alt: "Deluxe Room bed detail", category: "Rooms" },
+  { id: "8", src: "/images/restaurant/restaurant-01.jpg", alt: "Restaurant table setting", category: "Restaurant" },
+  { id: "9", src: "/images/restaurant/restaurant-05.jpg", alt: "Restaurant seating area", category: "Restaurant" },
+  { id: "10", src: "/images/restaurant/restaurant-03.jpg", alt: "Restaurant with tufted banquette", category: "Restaurant" },
+  { id: "11", src: "/images/restaurant/restaurant-08.jpg", alt: "Multi-cuisine dining spread", category: "Restaurant" },
+  { id: "12", src: "/images/restaurant/restaurant-10.jpg", alt: "Family dining in the atrium", category: "Restaurant" },
+  { id: "13", src: "/images/event-hall/event-hall-01.jpg", alt: "Conference hall with chandeliers", category: "Event Hall" },
+  { id: "14", src: "/images/event-hall/event-hall-04.jpg", alt: "Event hall with natural light", category: "Event Hall" },
+  { id: "15", src: "/images/event-hall/event-hall-05.jpg", alt: "Banquet hall wide view", category: "Event Hall" },
+  { id: "16", src: "/images/bathroom/bathroom-06.jpg", alt: "Modern bathroom vanity", category: "Bathroom" },
+  { id: "17", src: "/images/bathroom/bathroom-03.jpg", alt: "Bathroom with LED mirror", category: "Bathroom" },
+  { id: "18", src: "/images/bathroom/bathroom-09.jpg", alt: "Bathroom amenities", category: "Bathroom" },
 ];

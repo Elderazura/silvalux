@@ -1,45 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
+import { GALLERY_ITEMS } from "@/lib/constants";
 
-const galleryItems = [
-  { id: 1, label: "Resort Entrance", category: "Exterior" },
-  { id: 2, label: "Deluxe Room", category: "Rooms" },
-  { id: 3, label: "Suite Room", category: "Rooms" },
-  { id: 4, label: "Restaurant", category: "Dining" },
-  { id: 5, label: "Conference Hall", category: "Events" },
-  { id: 6, label: "Garden View", category: "Exterior" },
-  { id: 7, label: "Banquet Hall", category: "Events" },
-  { id: 8, label: "Dining Area", category: "Dining" },
-  { id: 9, label: "Lobby", category: "Interior" },
-];
-
-const categories = [
-  "All",
-  "Exterior",
-  "Rooms",
-  "Dining",
-  "Events",
-  "Interior",
-];
+const categories = ["All", "Rooms", "Restaurant", "Event Hall", "Bathroom"];
 
 export default function GalleryPage() {
-  const [selected, setSelected] = useState<(typeof galleryItems)[0] | null>(
+  const [selected, setSelected] = useState<(typeof GALLERY_ITEMS)[0] | null>(
     null
   );
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filtered =
     activeCategory === "All"
-      ? galleryItems
-      : galleryItems.filter((item) => item.category === activeCategory);
+      ? GALLERY_ITEMS
+      : GALLERY_ITEMS.filter((item) => item.category === activeCategory);
 
   return (
     <>
-      <Hero title="Gallery" subtitle="Glimpses of Silva Lux Resort" compact />
+      <Hero
+        title="Gallery"
+        subtitle="Glimpses of Silva Lux Resort"
+        compact
+        image="/images/restaurant/restaurant-03.jpg"
+      />
 
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -69,17 +57,19 @@ export default function GalleryPage() {
               <button
                 key={item.id}
                 onClick={() => setSelected(item)}
-                className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-forest-100 transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                className="group relative aspect-[4/3] overflow-hidden rounded-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
               >
-                <div className="flex h-full w-full items-center justify-center p-2">
-                  <span className="font-serif text-sm sm:text-lg md:text-xl text-forest-400 text-center">
-                    {item.label}
-                  </span>
-                </div>
-                <div className="absolute inset-0 bg-forest-800/0 transition-colors group-hover:bg-forest-800/30" />
-                <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-gradient-to-t from-forest-800/80 to-transparent p-2 sm:p-4 transition-transform group-hover:translate-y-0">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-forest-900/0 transition-colors group-hover:bg-forest-900/30" />
+                <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-gradient-to-t from-forest-900/80 to-transparent p-2 sm:p-4 transition-transform group-hover:translate-y-0">
                   <span className="text-xs sm:text-sm font-medium text-cream">
-                    {item.label}
+                    {item.alt}
                   </span>
                   <span className="ml-1 sm:ml-2 text-[10px] sm:text-xs text-cream/60">
                     {item.category}
@@ -88,24 +78,26 @@ export default function GalleryPage() {
               </button>
             ))}
           </div>
-
-          <p className="mt-8 sm:mt-12 text-center text-xs sm:text-sm text-muted-foreground">
-            Images will be updated soon. Stay tuned for more photos of our
-            resort.
-          </p>
         </div>
       </section>
 
       <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>
         <DialogContent className="max-w-[95vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl border-forest-200 p-0 overflow-hidden">
-          <div className="aspect-[16/10] bg-forest-100 flex items-center justify-center">
-            <span className="font-serif text-xl sm:text-2xl md:text-3xl text-forest-400">
-              {selected?.label}
-            </span>
-          </div>
+          {selected && (
+            <div className="relative aspect-[16/10]">
+              <Image
+                src={selected.src}
+                alt={selected.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 95vw, (max-width: 768px) 36rem, (max-width: 1024px) 42rem, 48rem"
+                quality={90}
+              />
+            </div>
+          )}
           <div className="p-3 sm:p-4">
             <h3 className="font-serif text-base sm:text-lg font-semibold text-forest-600">
-              {selected?.label}
+              {selected?.alt}
             </h3>
             <p className="text-xs sm:text-sm text-muted-foreground">
               {selected?.category}
