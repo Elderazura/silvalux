@@ -36,7 +36,7 @@ export default function Home() {
         title="Welcome to Silva Lux"
         subtitle="A serene getaway in the heart of Wayanad, where comfort meets nature's embrace."
         cta={{ label: "Explore Rooms", href: "/rooms" }}
-        image="/images/exterior/exterior-01.jpg"
+        image="/images/exterior/hero.jpg"
       />
 
       {/* Welcome */}
